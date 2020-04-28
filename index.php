@@ -2,16 +2,20 @@
 	include_once "Classes/Conexao.class.php";
 	include_once "Classes/Livros.class.php";
 
-	if(!$_REQUEST['txtTitulo'] == ""){ 
-		
-		$Titulo = $_POST['txtTitulo'];
-		$Autor = $_POST['txtAutor'];
-		$Categoria = $_POST['txtCategoria'];
 
-		//cria o objeto e cadastra no banco
-		$Livro1 = new Livros;
-		$Livro1->cadastraLivros($conn,$Titulo,$Autor,$Categoria);
-		//$Livro1->resgataLivros($conn);
+	$minhaConexao = new Conexao("localhost", "livraria", "root", "");
+	$minhaConexao->setTable('livros_3');
+
+
+	if(!filter_input(INPUT_POST, 'txtTitulo') == ""){ 
+		
+		$Titulo = filter_input(INPUT_POST, 'txtTitulo');
+		$Autor = filter_input(INPUT_POST, 'txtAutor');
+		$Categoria = filter_input(INPUT_POST, 'txtCategoria');
+
+		//Cria um objeto e passar pelo método construtor
+		$novoLivro = new Livros($Titulo,$Autor,$Categoria);
+		$novoLivro->cadastraLivros($minhaConexao->iniciaConexao());	
 	}	
 ?>
 <!DOCTYPE html>
