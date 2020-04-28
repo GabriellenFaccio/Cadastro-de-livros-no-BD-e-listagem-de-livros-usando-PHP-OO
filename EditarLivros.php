@@ -94,10 +94,10 @@
 		<p>
 			<label> Categoria :  </label>
 			<select name='txtEditC'>
-				<option value="Suspense"> Suspense </option>
-				<option value="Romance"> Romance </option>
-				<option value="Ficcao"> Ficcao </option>
-				<option value="Infantil"> Infantil </option>
+				<option value="Suspense" <?=($editLivro->categoria == "Suspense")? "selected=\"true\"": "n"?>> Suspense </option>
+				<option value="Romance" <?=($editLivro->categoria == "Romance")? "selected=\"true\"": "n"?>> Romance </option>
+				<option value="Ficcao" <?=($editLivro->categoria == "Ficcao")? "selected=\"true\"": "n"?>> Ficcao </option>
+				<option value="Infantil" <?=($editLivro->categoria == "Infantil")? "selected=\"true\"": "n"?>> Infantil </option>
 			</select>
 		</p>
 

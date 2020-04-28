@@ -35,10 +35,10 @@
 
 		<label> Categoria :  </label>
 			<select name='txtCategoria'>
-				<option value="Suspense"> Suspense </option>
+				<option value="Suspense" > Suspense </option>
 				<option value="Romance"> Romance </option>
 				<option value="Ficcao"> Ficcao </option>
-				<option value="Infantil"> Infantil </option>
+				<option value="Infantil" selected="true"> Infantil </option>
 			</select>
 
 		<br><br>

@@ -104,35 +104,29 @@
 			$countArrays = count((array)$dataInsert);
 
 			foreach ($dataInsert as $key => $value) {
+				
 				$queryInsert .= "{$key}";
 				$countArrays--;
 				$queryInsert .= ($countArrays == 0 ? ") VALUES ( " : ", "); 
 			}
+
 			$countArrays = count((array)$dataInsert);
 
 			foreach ($dataInsert as $key => $value) {
+				
 				$queryInsert .= ":{$key}";
 				$countArrays--;
 				$queryInsert .= ($countArrays == 0 ? ")" : ", ");
 			}
 
 			$insert = $this->conexao->prepare($queryInsert);
-			$insert->bindValue(':titulo', $dataInsert->titulo);
-			$insert->bindValue(':autor', $dataInsert->autor);
-			$insert->bindValue(':categoria', $dataInsert->categoria);
-			$insert->bindValue(':id', $dataInsert->id);
+
+			foreach ($dataInsert as $key => $value) {
+				$insert->bindValue(":{$key}", $value);
+			}
+			print_r($queryInsert);
 
 			$insert->execute();
-
-
-
-			/*$insert = $this->conexao->prepare("INSERT INTO {$this->table} (titulo, autor, categoria) VALUES ( :titulo, :autor, :categoria)");
-			
-			$insert->bindValue(':titulo', $objetoLivro->titulo);
-			$insert->bindValue(':autor', $objetoLivro->autor);
-			$insert->bindValue(':categoria', $objetoLivro->categoria);
-
-			$insert->execute();*/
 
 			//funcao do PDO para debugar o objeto: $objeto->debugDumpParams();
 			

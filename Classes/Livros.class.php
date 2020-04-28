@@ -20,7 +20,7 @@
 
 		public function cadastraLivros($minhaConexao)
 		{
-
+			unset($this->id);
 			$minhaConexao->insereBanco($this);
 		}
 
@@ -28,7 +28,7 @@
 		//faz o updade quando é feito a edicao
 		public function updateLivro($minhaConexao)
 		{
-		
+
 			$minhaConexao->updateOnBanco($this, ['id' => $this->id]);
 
 		}
